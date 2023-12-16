@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "CozyWinterJam2023.sln"
+    "dotnet.defaultSolution": "CozyWinterJam2023_DG.sln"
 }
