@@ -4343,7 +4343,7 @@ MonoBehaviour:
   myMixer: {fileID: 0}
   musicSlider: {fileID: 0}
   SFXSlider: {fileID: 0}
-  optionPanel: {fileID: 0}
+  optionPanel: {fileID: 1211360779}
   fadeImage: {fileID: 0}
 --- !u!1 &1759527472
 GameObject:
