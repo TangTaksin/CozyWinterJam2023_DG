@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1845928572}
-  m_IndirectSpecularColor: {r: 0.5950518, g: 0.69110376, b: 0.77656925, a: 1}
+  m_IndirectSpecularColor: {r: 0.59650946, g: 0.69382524, b: 0.7804912, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -134,6 +134,10 @@ PrefabInstance:
     - target: {fileID: 160216, guid: c43d0e52994b357469fc0af69152016c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 160216, guid: c43d0e52994b357469fc0af69152016c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 436676, guid: c43d0e52994b357469fc0af69152016c, type: 3}
       propertyPath: m_LocalScale.x
@@ -373,6 +377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_09 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 117394, guid: 9211b397ed1fec54fa30bd8c8b657e1f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 401752, guid: 9211b397ed1fec54fa30bd8c8b657e1f, type: 3}
       propertyPath: m_LocalScale.x
       value: 17.6
@@ -598,6 +606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_010
       objectReference: {fileID: 0}
+    - target: {fileID: 177766, guid: cd24e2db351b23d4394bf6b5203c87a9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 468960, guid: cd24e2db351b23d4394bf6b5203c87a9, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
@@ -685,6 +697,10 @@ PrefabInstance:
     - target: {fileID: 107944, guid: 78945eba40111464bb27c0682e72aad3, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_04_Snow
+      objectReference: {fileID: 0}
+    - target: {fileID: 107944, guid: 78945eba40111464bb27c0682e72aad3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 408134, guid: 78945eba40111464bb27c0682e72aad3, type: 3}
       propertyPath: m_LocalScale.x
@@ -808,6 +824,10 @@ PrefabInstance:
     - target: {fileID: 160216, guid: c43d0e52994b357469fc0af69152016c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 160216, guid: c43d0e52994b357469fc0af69152016c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 436676, guid: c43d0e52994b357469fc0af69152016c, type: 3}
       propertyPath: m_LocalScale.x
@@ -1120,7 +1140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 142422722}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ClimbLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1328,6 +1348,10 @@ PrefabInstance:
     - target: {fileID: 192136, guid: 22fe377b1d631ae4fb1b79c0bed36c2d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Pebble_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 192136, guid: 22fe377b1d631ae4fb1b79c0bed36c2d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 192136, guid: 22fe377b1d631ae4fb1b79c0bed36c2d, type: 3}
       propertyPath: m_IsActive
@@ -1588,6 +1612,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &257298475
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 407586604429746047, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_Name
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171283508771071216, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
 --- !u!1001 &262975846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3326,6 +3447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_09 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 117394, guid: 9211b397ed1fec54fa30bd8c8b657e1f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 401752, guid: 9211b397ed1fec54fa30bd8c8b657e1f, type: 3}
       propertyPath: m_LocalScale.x
       value: 15
@@ -3517,6 +3642,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471172010}
   m_CullTransparentMesh: 1
+--- !u!114 &472803326 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9116933582615836406, guid: d492795b3421b3c45b2710754a1471b0, type: 3}
+  m_PrefabInstance: {fileID: 257298475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &478432490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4531,6 +4667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02
       objectReference: {fileID: 0}
+    - target: {fileID: 160216, guid: c43d0e52994b357469fc0af69152016c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 436676, guid: c43d0e52994b357469fc0af69152016c, type: 3}
       propertyPath: m_LocalScale.x
       value: 11
@@ -5020,6 +5160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_09
       objectReference: {fileID: 0}
+    - target: {fileID: 117394, guid: 9211b397ed1fec54fa30bd8c8b657e1f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 401752, guid: 9211b397ed1fec54fa30bd8c8b657e1f, type: 3}
       propertyPath: m_LocalScale.x
       value: 17.6
@@ -5502,6 +5646,10 @@ PrefabInstance:
     - target: {fileID: 107944, guid: 78945eba40111464bb27c0682e72aad3, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_04_Snow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 107944, guid: 78945eba40111464bb27c0682e72aad3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 408134, guid: 78945eba40111464bb27c0682e72aad3, type: 3}
       propertyPath: m_LocalScale.x
@@ -6275,6 +6423,10 @@ PrefabInstance:
     - target: {fileID: 120202, guid: 53514da7b3b16244b8d87288c5e3884c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Pebble_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 120202, guid: 53514da7b3b16244b8d87288c5e3884c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 120202, guid: 53514da7b3b16244b8d87288c5e3884c, type: 3}
       propertyPath: m_IsActive
@@ -8360,6 +8512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 160216, guid: c43d0e52994b357469fc0af69152016c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 436676, guid: c43d0e52994b357469fc0af69152016c, type: 3}
       propertyPath: m_LocalScale.x
       value: 11
@@ -8437,6 +8593,10 @@ PrefabInstance:
     - target: {fileID: 160216, guid: c43d0e52994b357469fc0af69152016c, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 160216, guid: c43d0e52994b357469fc0af69152016c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 436676, guid: c43d0e52994b357469fc0af69152016c, type: 3}
       propertyPath: m_LocalScale.x
@@ -8654,6 +8814,10 @@ PrefabInstance:
     - target: {fileID: 177766, guid: cd24e2db351b23d4394bf6b5203c87a9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_010 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 177766, guid: cd24e2db351b23d4394bf6b5203c87a9, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 468960, guid: cd24e2db351b23d4394bf6b5203c87a9, type: 3}
       propertyPath: m_LocalScale.x
@@ -9181,6 +9345,10 @@ PrefabInstance:
     - target: {fileID: 193554, guid: 581fbcc5bd6fd2e48be0ddfa9bceef37, type: 3}
       propertyPath: m_Name
       value: SM_Env_Pebble_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 193554, guid: 581fbcc5bd6fd2e48be0ddfa9bceef37, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 193554, guid: 581fbcc5bd6fd2e48be0ddfa9bceef37, type: 3}
       propertyPath: m_IsActive
@@ -10182,6 +10350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: guage
+      value: 
+      objectReference: {fileID: 472803326}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10467,6 +10639,10 @@ PrefabInstance:
     - target: {fileID: 141656, guid: b7cd2ffa547f8a64a872e4c0e2fea8fd, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_03_Snow
+      objectReference: {fileID: 0}
+    - target: {fileID: 141656, guid: b7cd2ffa547f8a64a872e4c0e2fea8fd, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 437340, guid: b7cd2ffa547f8a64a872e4c0e2fea8fd, type: 3}
       propertyPath: m_LocalScale.x
@@ -11203,6 +11379,10 @@ PrefabInstance:
     - target: {fileID: 121866, guid: 08edd15f232afde409a1233e662e4877, type: 3}
       propertyPath: m_Name
       value: SM_Env_Pebble_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 121866, guid: 08edd15f232afde409a1233e662e4877, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 121866, guid: 08edd15f232afde409a1233e662e4877, type: 3}
       propertyPath: m_IsActive
@@ -17306,6 +17486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_05_Snow
       objectReference: {fileID: 0}
+    - target: {fileID: 190588, guid: 08d9e7899d5dc7740805a597bfe30058, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 489542, guid: 08d9e7899d5dc7740805a597bfe30058, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
@@ -17389,6 +17573,10 @@ PrefabInstance:
     - target: {fileID: 124282, guid: 4a0161dd17a0d6b42b4f8046836bcb22, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_07 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 124282, guid: 4a0161dd17a0d6b42b4f8046836bcb22, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 431194, guid: 4a0161dd17a0d6b42b4f8046836bcb22, type: 3}
       propertyPath: m_LocalScale.x
@@ -18060,6 +18248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_02 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 160216, guid: c43d0e52994b357469fc0af69152016c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 436676, guid: c43d0e52994b357469fc0af69152016c, type: 3}
       propertyPath: m_LocalScale.x
       value: 11
@@ -18652,6 +18844,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Rock_07
       objectReference: {fileID: 0}
+    - target: {fileID: 124282, guid: 4a0161dd17a0d6b42b4f8046836bcb22, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 431194, guid: 4a0161dd17a0d6b42b4f8046836bcb22, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
@@ -18918,6 +19114,7 @@ SceneRoots:
   - {fileID: 131863149}
   - {fileID: 831631973}
   - {fileID: 1459382671}
+  - {fileID: 257298475}
   - {fileID: 801612498}
   - {fileID: 2003263485}
   - {fileID: 1175823217}

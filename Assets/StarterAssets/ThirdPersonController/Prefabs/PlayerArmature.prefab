@@ -2298,16 +2298,31 @@ MonoBehaviour:
   JumpTimeout: 0.3
   FallTimeout: 0.15
   Grounded: 1
+  Climbing: 0
   GroundedOffset: -0.14
   GroundedRadius: 0.28
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
+  wallCheckLenght: 2
+  wallCheckYOffset: 1
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallMovementSpeed: 1
+  wallSprintMultiplier: 2
+  wallOffDistance: 1
+  stamina: 100
+  staminaRegen: 20
+  climbCost: -10
+  climbSprintAddCost: -5
+  guage: {fileID: 0}
   CinemachineCameraTarget: {fileID: 8338988566280778634}
   TopClamp: 70
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  currentState: 0
 --- !u!114 &5885216827943657505
 MonoBehaviour:
   m_ObjectHideFlags: 0

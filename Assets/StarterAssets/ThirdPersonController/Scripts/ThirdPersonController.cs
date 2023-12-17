@@ -1,4 +1,5 @@
 ﻿ using UnityEngine;
+using UnityEngine.UI;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -77,6 +78,8 @@ namespace StarterAssets
         public float climbCost = 2;
         public float climbSprintAddCost = 1;
         bool canUseStamina = true;
+        public Image guage;
+        
 
         [Header("Cinemachine")]
         [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
@@ -268,11 +271,13 @@ namespace StarterAssets
 
         void GainStamina(float amount)
         {
-            if (curStamina <= stamina)
-                curStamina += amount;
+           curStamina += amount * Time.deltaTime;
 
             if (curStamina >= stamina)
+            {
+                curStamina = stamina;
                 canUseStamina = true;
+            }
 
             if (curStamina <= 0)
             {
@@ -280,6 +285,7 @@ namespace StarterAssets
                 canUseStamina = false;
             }
 
+            guage.fillAmount = curStamina / stamina;
         }
 
         void WallCheck()
