@@ -5,7 +5,7 @@ using DitzelGames.FastIK;
 
 public class Player : MonoBehaviour
 {
-    public enum PlayerState {Walking, Climbing, Ragdoll, StandUp}
+    public enum PlayerState {Ground, Jump, Fall, Climb}
     PlayerState currentPlayerState;
 
     Camera mainCam;
@@ -15,27 +15,12 @@ public class Player : MonoBehaviour
     Collider playerColl;
 
     Vector3 inputDir;
-    Vector3 mouseInput;
-    Vector3 mousePos;
 
     bool isGrounded;
-    bool[] activeHands = {false, false};
-    int aHandCount;
-    bool[] grabingHands = { false, false };
-    int gHandCount;
 
     [Header("Ground")]
     [SerializeField] float groundTopSpeed;
     [SerializeField] float acceleration;
-
-    [Header("IKs")]
-    [SerializeField] Hand[] handIKs;
-    [SerializeField] FastIKFabric[] footIKs;
-    [SerializeField] Transform[] footTarget;
-
-    [Header("BodyPart")]
-    [SerializeField] Rigidbody[] ragdollParts;
-    [SerializeField] Rigidbody movePart;
 
     //
 
@@ -45,29 +30,16 @@ public class Player : MonoBehaviour
 
         switch (currentPlayerState)
         {
-            case PlayerState.Walking:
-                animator.enabled = true;
-                playerColl.enabled = true;
-                playerBody.isKinematic = false;
+            case PlayerState.Ground:
                 break;
 
-            case PlayerState.Climbing:
-                animator.enabled = false;
-                playerColl.enabled = false;
-                playerBody.isKinematic = true;
+            case PlayerState.Jump:
                 break;
 
-            case PlayerState.Ragdoll:
-                animator.enabled = false;
-                playerColl.enabled = false;
-                playerBody.isKinematic = false;
-
+            case PlayerState.Fall:
                 break;
 
-            case PlayerState.StandUp:
-                animator.enabled = true;
-                playerColl.enabled = true;
-                playerBody.isKinematic = false;
+            case PlayerState.Climb:
                 break;
 
         }
@@ -75,27 +47,13 @@ public class Player : MonoBehaviour
 
     void StateCondition()
     {
-        if (gHandCount > 0)
-        {
-            ChangeState(PlayerState.Climbing);
-        }
 
-        if (gHandCount <= 0)
-        {
-            if (isGrounded)
-                ChangeState(PlayerState.Walking);
-            else
-                ChangeState(PlayerState.Ragdoll);
-        }
     }
 
     //
 
     private void Start()
     {
-        Hand.onGrab += onHandGrab;
-        Hand.onLift += onHandActive;
-
         //Get Camera
         mainCam = Camera.main;
 
@@ -103,25 +61,32 @@ public class Player : MonoBehaviour
         playerColl = GetComponent<Collider>();
         animator = GetComponent<Animator>();
         
-        ChangeState(PlayerState.Walking);
-
-        //init hand and foot targets position and turn off IK
-        for (int i = 0; i < handIKs.Length; i++)
-        {
-            footTarget[i].position = footIKs[i].transform.position;
-
-            footIKs[i].enabled = false;
-        }
+        ChangeState(PlayerState.Ground);
     }
 
     private void Update()
     {
         InputProcess();
 
-        Walking();
-        GroundCheck();
+        //state check
+        switch (currentPlayerState)
+        {
+            case PlayerState.Ground:
+                Walking();
+                break;
 
-        ClimbingLogic();
+            case PlayerState.Jump:
+                break;
+
+            case PlayerState.Fall:
+                break;
+
+            case PlayerState.Climb:
+                break;
+
+        }
+
+        GroundCheck();
 
         StateCondition();
 
@@ -133,50 +98,12 @@ public class Player : MonoBehaviour
     {
         inputDir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         inputDir.Normalize();
-
-        mouseInput = new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        mousePos = Input.mousePosition;
-        
-        //Return Hands
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            foreach (Hand hand in handIKs)
-            {
-                hand.ChangeHandState(Hand.HandState.Idle);
-            }
-        }
-
-        //Mouse Click
-        if (Input.GetMouseButton(0)) // L
-        {
-            handIKs[0].ChangeHandState(Hand.HandState.Lift);
-        }
-
-        if (Input.GetMouseButton(1)) // R
-        {
-            handIKs[1].ChangeHandState(Hand.HandState.Lift);
-        }
-
-        //Mouse Release
-        if (Input.GetMouseButtonUp(0)) // L
-        {
-            handIKs[0].ChangeHandState(Hand.HandState.Placing);
-        }
-
-        if (Input.GetMouseButtonUp(1)) // R
-        {
-            handIKs[1].ChangeHandState(Hand.HandState.Placing);
-        }
-
     }
 
     //
 
     void Walking()
     {
-        if (currentPlayerState != PlayerState.Walking)
-            return;
-
         //set XZ direction
         var baseVelo = new Vector3(inputDir.x, 0, inputDir.y);
 
@@ -198,6 +125,9 @@ public class Player : MonoBehaviour
         //Turn player based on input direction when the input happened.
         var targetRotate = Quaternion.LookRotation(camVelo,Vector3.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotate, inputDir.sqrMagnitude);
+
+        //Animate
+        animator.SetFloat("inputMagnitude", inputDir.sqrMagnitude);
     }
 
     void GroundCheck()
@@ -207,59 +137,5 @@ public class Player : MonoBehaviour
         isGrounded = (hit != null);
     }
 
-    //
 
-    void onHandGrab(int index, bool state)
-    {
-        grabingHands[index] = state;
-        GrabbingHandCounter();
-    }
-
-    void onHandActive(int index, bool state)
-    {
-        activeHands[index] = state;
-        ActiveHandCounter();
-    }
-
-    //
-
-    void ActiveHandCounter() 
-    {
-        aHandCount = 0;
-
-        foreach (bool aHand in activeHands)
-        {
-            if (aHand)
-                aHandCount++;
-        }
-    }
-
-    void GrabbingHandCounter()
-    {
-        gHandCount = 0;
-
-        foreach (bool gHand in grabingHands)
-        {
-            if (gHand)
-                gHandCount++;
-        }
-    }
-
-    //
-
-    void ClimbingLogic()
-    {
-        if (currentPlayerState == PlayerState.Climbing)
-        {
-            // while there is one hand grabbing the wall amd the other lift...
-            if (gHandCount > 0 && aHandCount > 0)
-            {
-                // translate player body between two hand.
-                var midPoint = Vector3.Lerp(handIKs[0].transform.position, handIKs[1].transform.position, 0.5f);
-
-                movePart.MovePosition(midPoint);
-            }
-
-        }
-    }    
 }

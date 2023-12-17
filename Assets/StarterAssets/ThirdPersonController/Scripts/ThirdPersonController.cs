@@ -50,6 +50,8 @@ namespace StarterAssets
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
 
+        public bool Climbing = false;
+
         [Tooltip("Useful for rough ground")]
         public float GroundedOffset = -0.14f;
 
@@ -58,6 +60,23 @@ namespace StarterAssets
 
         [Tooltip("What layers the character uses as ground")]
         public LayerMask GroundLayers;
+
+        [Header("Wall Climb")]
+        public float wallCheckLenght;
+        public float wallCheckYOffset;
+        public LayerMask wallLayer;
+        Vector3 wallNormal;
+        public float wallMovementSpeed = 1f;
+        public float wallSprintMultiplier = 2f;
+        public float wallOffDistance = 1f;
+
+        [Header("Stamina")]
+        public float stamina = 100;
+        float curStamina;
+        public float staminaRegen = 1;
+        public float climbCost = 2;
+        public float climbSprintAddCost = 1;
+        bool canUseStamina = true;
 
         [Header("Cinemachine")]
         [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
@@ -97,6 +116,7 @@ namespace StarterAssets
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+        
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
@@ -122,6 +142,12 @@ namespace StarterAssets
             }
         }
 
+        
+        public enum PlayerState {Grounded, Climbing }
+        [Header("State")]
+        public PlayerState currentState = PlayerState.Grounded;
+
+        //
 
         private void Awake()
         {
@@ -145,6 +171,8 @@ namespace StarterAssets
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
 
+            curStamina = stamina;
+
             AssignAnimationIDs();
 
             // reset our timeouts on start
@@ -156,15 +184,32 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            JumpAndGravity();
+            
+
+            switch (currentState)
+            {
+                case PlayerState.Grounded:
+                    GainStamina(staminaRegen);
+                    JumpAndGravity();
+                    Move();
+                    break;
+
+                case PlayerState.Climbing:
+                    GetOffWall();
+                    WallMovement();
+                    break;
+            }
+
+            WallCheck();
             GroundedCheck();
-            Move();
         }
 
         private void LateUpdate()
         {
             CameraRotation();
         }
+
+        //
 
         private void AssignAnimationIDs()
         {
@@ -173,7 +218,15 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+
         }
+        
+        void ChangeState(PlayerState state)
+        {
+            currentState = state;
+        }
+
+        //
 
         private void GroundedCheck()
         {
@@ -210,6 +263,97 @@ namespace StarterAssets
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
         }
+
+        //
+
+        void GainStamina(float amount)
+        {
+            if (curStamina <= stamina)
+                curStamina += amount;
+
+            if (curStamina >= stamina)
+                canUseStamina = true;
+
+            if (curStamina <= 0)
+            {
+                curStamina = 0;
+                canUseStamina = false;
+            }
+
+        }
+
+        void WallCheck()
+        {
+            Climbing = Physics.Raycast(transform.position + Vector3.up * 1f, transform.forward, out RaycastHit hit, wallCheckLenght, wallLayer, QueryTriggerInteraction.Ignore);
+
+            wallNormal = hit.normal;
+
+            if (Climbing)
+            {
+                ChangeState(PlayerState.Climbing);
+            }
+            else
+            {
+                ChangeState(PlayerState.Grounded);
+            }
+
+            // update animator if using character
+            if (_hasAnimator)
+            {
+                _animator.SetBool("Climbing", Climbing);
+            }
+        }
+
+        void WallMovement()
+        {
+            if (!canUseStamina)
+            {
+                ChangeState(PlayerState.Grounded);
+                return;
+            }
+
+            transform.forward = -wallNormal;
+
+            var inputDir = _input.move.x * transform.right + _input.move.y * transform.up;
+
+            inputDir.Normalize();
+
+            if (_animator != null)
+            {
+                _animator.SetFloat("X", _input.move.x);
+                _animator.SetFloat("Y", _input.move.y);
+
+            }
+
+            if (inputDir.sqrMagnitude <= 0)
+                return;
+
+            GainStamina(climbCost);
+
+            _controller.Move(inputDir * wallMovementSpeed * WallSprint() * Time.deltaTime);
+        }
+
+        float WallSprint()
+        {
+            var mul = 1f;
+            if (_input.sprint)
+            {
+                GainStamina(climbSprintAddCost);
+                mul = wallSprintMultiplier;
+            }
+
+            return mul;
+        }
+
+        void GetOffWall()
+        {
+            if (_input.jump)
+            {
+                _controller.Move( Vector3.up * wallOffDistance);
+            }
+        }
+
+        //
 
         private void Move()
         {
@@ -347,6 +491,8 @@ namespace StarterAssets
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
         }
+
+        //
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
