@@ -49,8 +49,9 @@ MonoBehaviour:
   musicSource: {fileID: 1221869908104757088}
   sfxSource: {fileID: 6175925011304880512}
   backgroundMusic: {fileID: 8300000, guid: e33adb042de74c24c9157f67bbd604a6, type: 3}
-  endMusic: {fileID: 8300000, guid: 50b89593a838c464695d9d7695233aec, type: 3}
-  climbSFX: {fileID: 0}
+  endMusic: {fileID: 8300000, guid: 1a02f1e3ae055b948bf84c18618046da, type: 3}
+  climbSFX: {fileID: 8300000, guid: b49a17647e99bd14c8298f795128bc7d, type: 3}
+  climb2SFX: {fileID: 8300000, guid: 6820c6b86b6e9754b93e1c4d68eb0a62, type: 3}
 --- !u!1 &4275254591194654144
 GameObject:
   m_ObjectHideFlags: 0

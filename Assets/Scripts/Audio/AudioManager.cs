@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("==============SFX Clip=============")]
     public AudioClip climbSFX;
+    public AudioClip climb2SFX;
 
 
     public static AudioManager Instance { get; private set; }
