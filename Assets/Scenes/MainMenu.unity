@@ -4463,7 +4463,7 @@ Transform:
   m_GameObject: {fileID: 869843262}
   serializedVersion: 2
   m_LocalRotation: {x: -0.10043731, y: -0.89845145, z: 0.31464803, w: -0.28929895}
-  m_LocalPosition: {x: -3.677, y: -2.11, z: 3.483}
+  m_LocalPosition: {x: -3.677, y: -1.795, z: 3.483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4518,7 +4518,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.96981126, g: 0.444533, b: 0.41537198, a: 1}
+  m_Color: {r: 0.96862745, g: 0.54966927, b: 0.41568622, a: 1}
   m_Intensity: 14
   m_Range: 10
   m_SpotAngle: 30
@@ -4564,7 +4564,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 2.5163666e-38, y: 6e-44, z: 6.097e-42, w: 1.6231e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -16286,7 +16286,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7175528835475989764, guid: bc69307c2f84e9748bd3cedb18c6e7fa, type: 3}
+      propertyPath: MaxDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175528835475989764, guid: bc69307c2f84e9748bd3cedb18c6e7fa, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175528835475989764, guid: bc69307c2f84e9748bd3cedb18c6e7fa, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2985264129538059774, guid: bc69307c2f84e9748bd3cedb18c6e7fa, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
